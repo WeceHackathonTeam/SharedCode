@@ -1,7 +1,22 @@
 //The main facebook file function to call in the first html page
 //This is how to comment in JS
 
+//initial facebook library-ish stuff?
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : 'your-app-id',
+          xfbml      : true,
+          version    : 'v2.1'
+        });
+      };
 
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
 
     
 //Callback handler for response
