@@ -1,1 +1,27 @@
 //This is the main file where all the code connects
+
+
+<html>
+<head>
+    <title>UIFood</title>
+</head>
+
+//body stuff
+
+
+
+
+
+
+
+
+
+
+
+
+
+//need to link in javascript libraries
+
+//use at the end to load in java script files
+//this is the basic format
+<script src="myscripts.js"></script>
