@@ -2,21 +2,7 @@
 //This is how to comment in JS
 
 
-//Login
-function Login()
-    {
-        FB.login(function(response) {
-           if (response.authResponse) 
-           {
-                getUserInfo(); // Get User Information.
- 
-            } else
-            {
-             console.log('Authorization failed.');
-            }
-         },{scope: 'email'});
- 
-    }
+
     
 //Callback handler for response
 FB.Event.subscribe('auth.authResponseChange', function(response) 
@@ -37,22 +23,48 @@ FB.Event.subscribe('auth.authResponseChange', function(response)
     }
 });
 
+//Login
+function Login()
+    {
+        FB.login(function(response) {
+           if (response.authResponse) 
+           {
+                getUserInfo(); // Get User Information.
+ 
+            } else
+            {
+             console.log('Authorization failed.');
+            }
+         },{scope: 'email'}); //Just email for now to make it easy
+ 
+    }
+
 //Getting the user information for login  
 function getUserInfo() {
-      FB.api('/me', function(response) {
+        FB.api('/me', function(response) {
  
-        //response.name       - User Full name
-        //response.link       - User Facebook URL
-        //response.username   - User name
-        //response.id         - id
-        //response.email      - User email
+      var str="<b>Name</b> : "+response.name+"<br>"; //name
+          str +="<b>Link: </b>"+response.link+"<br>"; //link to next webpage/next thing on the phone
+          str +="<b>Username:</b> "+response.username+"<br>"; //Username
+          str +="<b>id: </b>"+response.id+"<br>"; //ID 
+          str +="<b>Email:</b> "+response.email+"<br>"; //User's email
+          str +="<input type='button' value='Logout' onclick='Logout();'/>"; //Button to logout
+          document.getElementById("status").innerHTML=str;
  
-        });
-   }  
+    });
+    }
 
 //Logout --> should reload the current page it's on
 function Logout()
 {
     FB.logout(function(){document.location.reload();});
- 
 }
+
+// Load the SDK asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
