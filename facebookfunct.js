@@ -17,20 +17,7 @@ function Login()
          },{scope: 'email'});
  
     }
-
-//Getting the user information for login  
-function getUserInfo() {
-      FB.api('/me', function(response) {
- 
-        //response.name       - User Full name
-        //response.link       - User Facebook URL
-        //response.username   - User name
-        //response.id         - id
-        //response.email      - User email
- 
-        });
-   }  
-
+    
 //Callback handler for response
 FB.Event.subscribe('auth.authResponseChange', function(response) 
 {
@@ -49,6 +36,19 @@ FB.Event.subscribe('auth.authResponseChange', function(response)
         //UNKNOWN ERROR. Logged Out
     }
 });
+
+//Getting the user information for login  
+function getUserInfo() {
+      FB.api('/me', function(response) {
+ 
+        //response.name       - User Full name
+        //response.link       - User Facebook URL
+        //response.username   - User name
+        //response.id         - id
+        //response.email      - User email
+ 
+        });
+   }  
 
 //Logout --> should reload the current page it's on
 function Logout()
